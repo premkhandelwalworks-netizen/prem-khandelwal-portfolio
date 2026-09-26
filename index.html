@@ -1,0 +1,716 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prem Khandelwal | Portfolio</title>
+
+    <meta name="description"
+          content="Portfolio of Prem Khandelwal — Computer Science student, gamer, video editor and developer.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #07070a;
+            --card: rgba(255,255,255,0.05);
+            --text: #f5f5f5;
+            --muted: #a4a4ad;
+            --accent: #8b5cf6;
+            --accent2: #06b6d4;
+            --border: rgba(255,255,255,0.10);
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(139,92,246,0.16), transparent 30%),
+                radial-gradient(circle at 85% 70%, rgba(6,182,212,0.12), transparent 30%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 20px 8%;
+
+            background: rgba(7,7,10,0.72);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            padding: 120px 20px 60px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hello {
+            color: var(--accent2);
+            font-size: 16px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: clamp(50px, 9vw, 100px);
+            line-height: 1;
+            margin-bottom: 20px;
+            letter-spacing: -4px;
+        }
+
+        h1 span {
+            background: linear-gradient(
+                90deg,
+                var(--accent),
+                var(--accent2)
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 19px;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 13px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .primary {
+            color: white;
+            background: linear-gradient(
+                90deg,
+                var(--accent),
+                var(--accent2)
+            );
+        }
+
+        .secondary {
+            color: white;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.04);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(139,92,246,0.25);
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 100px 8%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            font-size: 42px;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: var(--accent);
+        }
+
+        /* ABOUT */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .glass-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(12px);
+            transition: 0.3s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(139,92,246,0.4);
+        }
+
+        .glass-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .glass-card p {
+            color: var(--muted);
+        }
+
+        .info {
+            margin-top: 20px;
+        }
+
+        .info div {
+            margin: 12px 0;
+            color: var(--muted);
+        }
+
+        .info strong {
+            color: white;
+        }
+
+        /* SKILLS */
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill {
+            padding: 28px;
+            border-radius: 18px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--accent);
+        }
+
+        .skill-icon {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .skill h3 {
+            margin-bottom: 5px;
+        }
+
+        .skill p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* PROJECTS */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .project {
+            padding: 28px;
+            border-radius: 20px;
+            min-height: 220px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(139,92,246,0.10),
+                    rgba(6,182,212,0.04)
+                );
+
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-8px);
+        }
+
+        .project-number {
+            color: var(--accent2);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .project h3 {
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .project p {
+            color: var(--muted);
+        }
+
+        /* CONTACT */
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact-box {
+            max-width: 700px;
+            margin: auto;
+            padding: 45px 30px;
+            border-radius: 25px;
+
+            background: var(--card);
+            border: 1px solid var(--border);
+        }
+
+        .contact-box h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            color: var(--muted);
+            margin-bottom: 30px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            text-decoration: none;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+
+        .contact-link:hover {
+            background: rgba(139,92,246,0.15);
+            border-color: var(--accent);
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #777;
+            border-top: 1px solid var(--border);
+        }
+
+        footer span {
+            color: var(--accent);
+        }
+
+        /* ANIMATION */
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 18px 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            section {
+                padding: 80px 5%;
+            }
+
+            .about-grid,
+            .skills,
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                letter-spacing: -2px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="logo">Prem<span>.</span></div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content floating">
+
+            <div class="hello">
+                Hello, I'm
+            </div>
+
+            <h1>
+                Prem <span>Khandelwal</span>
+            </h1>
+
+            <p>
+                Computer Science student, developer, gamer and
+                video editor building my skills one project at a time.
+            </p>
+
+            <div class="buttons">
+                <a href="#projects" class="btn primary">
+                    Explore My Work
+                </a>
+
+                <a href="#contact" class="btn secondary">
+                    Contact Me
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <h2 class="section-title">
+            About <span>Me</span>
+        </h2>
+
+        <div class="about-grid">
+
+            <div class="glass-card">
+
+                <h3>Who I Am</h3>
+
+                <p>
+                    I'm Prem Khandelwal, an 18-year-old Computer Science
+                    student passionate about technology, programming,
+                    gaming and creative content.
+                </p>
+
+                <p style="margin-top:15px;">
+                    I enjoy learning new technologies, experimenting
+                    with code, editing videos and exploring the world
+                    of gaming.
+                </p>
+
+            </div>
+
+            <div class="glass-card">
+
+                <h3>My Details</h3>
+
+                <div class="info">
+
+                    <div>
+                        <strong>Name:</strong>
+                        Prem Khandelwal
+                    </div>
+
+                    <div>
+                        <strong>Age:</strong>
+                        18
+                    </div>
+
+                    <div>
+                        <strong>Education:</strong>
+                        KIIT — B.Sc. Computer Science
+                    </div>
+
+                    <div>
+                        <strong>Interests:</strong>
+                        Coding • Gaming • Video Editing
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+
+    <section id="skills">
+
+        <h2 class="section-title">
+            My <span>Skills</span>
+        </h2>
+
+        <div class="skills">
+
+            <div class="skill">
+                <div class="skill-icon">🐍</div>
+                <h3>Python</h3>
+                <p>Programming & problem solving</p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-icon">🌐</div>
+                <h3>HTML</h3>
+                <p>Web development & design</p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-icon">⚙️</div>
+                <h3>C</h3>
+                <p>Programming fundamentals</p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-icon">☕</div>
+                <h3>Java</h3>
+                <p>Object-oriented programming</p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-icon">🎮</div>
+                <h3>Gaming</h3>
+                <p>Gaming & gaming culture</p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-icon">🎬</div>
+                <h3>Video Editing</h3>
+                <p>Creative editing & content</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section id="projects">
+
+        <h2 class="section-title">
+            My <span>Projects</span>
+        </h2>
+
+        <div class="projects">
+
+            <div class="project">
+                <div class="project-number">01 — WEB</div>
+                <h3>Personal Portfolio</h3>
+                <p>
+                    A modern personal portfolio website built
+                    using HTML and CSS.
+                </p>
+            </div>
+
+            <div class="project">
+                <div class="project-number">02 — CODE</div>
+                <h3>Python Projects</h3>
+                <p>
+                    Programming experiments and projects created
+                    while learning Python.
+                </p>
+            </div>
+
+            <div class="project">
+                <div class="project-number">03 — CREATIVE</div>
+                <h3>Video Editing</h3>
+                <p>
+                    Creative video editing projects combining
+                    storytelling, gaming and visual effects.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="contact">
+
+        <h2 class="section-title">
+            Let's <span>Connect</span>
+        </h2>
+
+        <div class="contact-box">
+
+            <h2>Have a project in mind?</h2>
+
+            <p>
+                Feel free to reach out. I'm always open to
+                learning, creating and connecting with new people.
+            </p>
+
+            <div class="contact-links">
+
+                <a
+                    class="contact-link"
+                    href="tel:9337805549">
+                    📞 9337805549
+                </a>
+
+                <a
+                    class="contact-link"
+                    href="mailto:premkhandelwalworks@gmail.com">
+                    ✉️ Email Me
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 <span>Prem Khandelwal</span>.
+        Built with HTML & CSS.
+
+    </footer>
+
+
+    <script>
+
+        // Smooth reveal animation when sections enter viewport
+
+        const cards = document.querySelectorAll(
+            '.glass-card, .skill, .project'
+        );
+
+        const observer = new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.15
+            }
+        );
+
+        cards.forEach(card => {
+
+            card.style.opacity = "0";
+            card.style.transform = "translateY(30px)";
+            card.style.transition = "all 0.7s ease";
+
+            observer.observe(card);
+
+        });
+
+    </script>
+
+</body>
+</html>
+```
